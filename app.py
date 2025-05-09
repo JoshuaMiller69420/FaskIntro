@@ -48,6 +48,17 @@ def form():
         return render_template("greeting.html", name=name, ssn=ssn)
     return render_template("form.html")
 
+@app.route("/math")
+def math():
+    return render_template("math.html")
+
+@app.route("/math-results", methods=["GET", "POST"])
+def solve():
+    num1 = request.form.get("num1")
+    num2 = request.form.get("num2")
+    return render_template("results.html", num1=num1, num2=num2)
+
+
 if __name__ == "__main__":
     # debug = True enables automatic reload on changes and better error messages
     app.run(debug=True)
